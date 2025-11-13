@@ -7,6 +7,9 @@ export { hoursLoad }
 const ul = document.querySelector('ul#hours')
 
 function hoursLoad({ date }) {
+    // Limpa a lista de horários
+    ul.innerHTML = ""
+
     const opening = openingHours.map((hour) => {
         // Recuperar somente a hora
         const [scheduleHour] = hour.split(":")
