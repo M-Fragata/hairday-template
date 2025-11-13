@@ -6,20 +6,31 @@ export { hoursLoad }
 
 const ul = document.querySelector('ul#hours')
 
-function hoursLoad({ date }) {
+function hoursLoad({ date, dailySchedules }) {
     // Limpa a lista de horários
     ul.innerHTML = ""
+
+    // Obtém a lista de horários ocupados.
+    const unavailableHours = dailySchedules.map((schedule) => dayjs(schedule.when).format("HH:mm"))
 
     const opening = openingHours.map((hour) => {
         // Recuperar somente a hora
         const [scheduleHour] = hour.split(":")
 
         //Adiciona a hora na date e verifica se está no passado
-        const isHourPast = dayjs(date).add(scheduleHour, "hour").isAfter(dayjs())
+        const isHourPast = dayjs(date).add(scheduleHour, "hour").isBefore(dayjs())
         
+        // Define um limite de quantos agendamentos podem ser feito por horário
+        const limite = 4
+        // Verifica se o limite de agendamentos no horário foi atingido utilizando o filter
+        const isAvaiableCount = unavailableHours.filter(item => item === hour).length < limite
+
+        // Verifica se o horário ainda está disponivel utilizando duas condições, se o horário não está no passado e se possui menos de 4 agendamentos.
+       const available = isAvaiableCount && !isHourPast
+
         return{
             hour,
-            available: isHourPast,
+            available
         }
     })
 
