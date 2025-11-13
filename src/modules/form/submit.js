@@ -35,7 +35,7 @@ form.addEventListener('submit', async (event) =>{
         const [hour] = hourSelected.innerText.split(":")
 
         // Insere a hora na data
-        const when = dayjs(selectedDate.value).add(hour, "hour")
+        const when = dayjs(selectedDate.value).add(hour, "hour").format('YYYY-MM-DDTHH:mm:ss')
 
         // Gera um ID
         const id = new Date().getTime().toString()
