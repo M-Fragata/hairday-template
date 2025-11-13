@@ -1,3 +1,9 @@
 {
-    "schedules": []
+  "schedules": [
+    {
+      "id": 1763035392557,
+      "name": "MATHEUS FRAGATA DE MORAES",
+      "when": "2025-11-21T19:00:00.000Z"
+    }
+  ]
 }
