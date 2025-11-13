@@ -1,4 +1,5 @@
 import { apiConfig } from "./api-config.js"
+import { supabase } from "../supabase-cliente.js";
 import dayjs from "dayjs"
 
 export async function scheduleFetchByDay({ date }) {

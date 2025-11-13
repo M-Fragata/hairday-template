@@ -1,5 +1,5 @@
 import { apiConfig } from "./api-config.js";
-
+import { supabase } from "../supabase-cliente.js";
 
 
 export async function scheduleNew({ id, name, when }) {
