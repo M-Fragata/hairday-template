@@ -1,10 +1,5 @@
 "use strict"
 
-import { createClient } from '@supabase/supabase-js';
-import { supabaseConfig } from './api-config.js'; // ou o nome do seu arquivo
-
-
-
 // Configuração do dayjs
 import "./libs/dayjs.js"
 

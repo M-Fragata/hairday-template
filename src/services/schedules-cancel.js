@@ -1,7 +1,19 @@
-import { apiConfig } from "./api-config.js"
+import { supabaseConfig } from "./api-config.js"
 import { supabase } from "../supabase-cliente.js";
 
 export async function scheduleCancel({ id }) {
+
+    const {data, error} = await supabase
+        .from('schedules')
+        .delete()
+        .eq('id', id)
+    
+    if(error) {
+        console.error('Erro ao cancelar agendamento no Supabase', error.message)
+        throw new Error ('Não foi possível cancelar o agendamento.')
+    }
+
+    /*
     try {
         await fetch(`${apiConfig.baseURL}/schedules/${id}`, {
             method: "DELETE",
@@ -14,4 +26,5 @@ export async function scheduleCancel({ id }) {
         console.log(error)
         alert("Não foi possível cancelar o agendamento.")
     }
+        */
 }

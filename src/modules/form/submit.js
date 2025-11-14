@@ -34,15 +34,17 @@ form.addEventListener('submit', async (event) =>{
         // Recupera somente a hora
         const [hour] = hourSelected.innerText.split(":")
 
+        //Cria a data completa (ex: 2025-11-14T08:00:00)
+        const completeDate = `${selectedDate.value}T${hour}:00:00`
         // Insere a hora na data
-        const when = dayjs(selectedDate.value).add(hour, "hour").format('YYYY-MM-DDTHH:mm:ss')
+        const when = dayjs(completeDate).format('YYYY-MM-DDTHH:mm:ss')
 
         // Gera um ID
-        const id = new Date().getTime().toString()
-        console.log(typeof(id))
+        /*const id = new Date().getTime().toString()
+        console.log(typeof(id))*/
         // Faz o agendamento
         await scheduleNew({
-            id,
+            //id,
             name,
             when
         })

@@ -2,11 +2,18 @@ import { openingHours } from "../../utils/opening-hours.js"
 import dayjs from "dayjs"
 import { hoursClick } from "./hours.click.js"
 
-export { hoursLoad }
-
 const ul = document.querySelector('ul#hours')
 
-function hoursLoad({ date, dailySchedules }) {
+console.log('Elemento UL', ul)
+console.log('Horários funcionando?', openingHours)
+
+export function hoursLoad({ date, dailySchedules }) {
+
+    if(!ul){
+        console.error("ERRO FATAL: Elemento ul com id='hours' não encontrado no html" )
+        return
+    }
+
     // Limpa a lista de horários
     ul.innerHTML = ""
 
